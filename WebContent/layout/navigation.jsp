@@ -15,9 +15,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Word List</a></li>
-                <li><a href="#">Categories</a></li>
+                <li><a href='<s:url value="/"></s:url>'>Home<span class="sr-only">(current)</span></a></li>
+                <s:if test="#session.user">
+                    <li><a href="#">Word List</a></li>
+                    <li><a href="#">Categories</a></li>
+                </s:if>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
             <s:if test="#session.user">
                 <ul class="nav navbar-nav navbar-right">

@@ -69,3 +69,10 @@ body {
 
 /*SIGN UP*/
 
+
+/*ERRORS MESSAGE*/
+.errors, .message{
+    border:solid 1px white;
+    background-color: #F3DAF9;
+}
+
