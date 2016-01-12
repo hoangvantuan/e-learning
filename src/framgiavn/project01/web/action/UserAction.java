@@ -1,23 +1,28 @@
 package framgiavn.project01.web.action;
 
 import java.util.Date;
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.User;
 
-public class UserAction extends ActionSupport {
+public class UserAction extends ActionSupport implements SessionAware {
 
   /**
 	 * 
 	 */
-  private static final long serialVersionUID = 1L;
+  private static final long   serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness      userBusiness     = null;
-  private User              user             = null;
+  private UserBusiness        userBusiness     = null;
+  private User                user             = null;
+  private SessionMap<String, Object> session;
 
   public void setUserBusiness(UserBusiness userBusiness) {
 
@@ -70,19 +75,33 @@ public class UserAction extends ActionSupport {
       user = userBusiness.checkLogin(user);
     } catch (Exception e) {
       e.printStackTrace();
+      return ERROR;
     }
+    session.put("user", user);
     return SUCCESS;
   }
 
   public String signup() {
-      
-     user.setCreatedAt(new Date());
+
+    if (userBusiness.checkAccountAvalible(user) == null) {
+      user.setCreatedAt(new Date());
       try {
         userBusiness.signup(user);
       } catch (Exception e) {
         e.printStackTrace();
       }
       return SUCCESS;
+    } else {
+      return ERROR;
+    }
+
+  }
+
+  public String logout() {
+    if(session != null) {
+      session.invalidate();
+    }
+    return SUCCESS;
   }
 
   public String homePage() {
@@ -96,14 +115,9 @@ public class UserAction extends ActionSupport {
     return SUCCESS;
   }
 
-//  public void validate() {
-//
-//    if (user != null) {
-//      if ("tuantuan".equals(user.getUsername())) {
-//        addActionMessage("You are valid user!");
-//      } else {
-//        addActionError("I don't know you, dont try to hack me!");
-//      }
-//    }
-//  }
+  @Override
+  public void setSession(Map<String, Object> session) {
+
+    this.session = (SessionMap)session;
+  }
 }

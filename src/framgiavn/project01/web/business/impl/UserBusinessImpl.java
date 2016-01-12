@@ -82,13 +82,14 @@ public class UserBusinessImpl implements UserBusiness {
   }
 
   @Override
-  public boolean checkAccountAvalible(User user) {
-
-    if (findByEmail(user.getEmail()) == null
-        && findByUsername(user.getUsername()) == null)
-      return true;
-    else
-      return false;
+  public User checkAccountAvalible(User user) {
+    
+    try {
+      return getUserDAO().checkAccountAvalible(user);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
   }
 
 }

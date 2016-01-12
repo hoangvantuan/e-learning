@@ -19,17 +19,26 @@
                 <li><a href="#">Word List</a></li>
                 <li><a href="#">Categories</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                    role="button" aria-haspopup="true" aria-expanded="false">Account <span
-                        class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Activities</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul></li>
-            </ul>
+            <s:if test="#session.user">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle"
+                        data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">${user.username}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Activities</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href='<s:url value="/user/logout"></s:url>'>Logout</a></li>
+                        </ul></li>
+                </ul>
+            </s:if>
+            <s:else>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href='<s:url value="/user/signinForm"></s:url>'>Signin</a></li>
+                    <li><a href='<s:url value="/user/signupForm"></s:url>'>Signup</a></li>
+                </ul>
+            </s:else>
+
         </div>
         <!-- /.navbar-collapse -->
     </div>
