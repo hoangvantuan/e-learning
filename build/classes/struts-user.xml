@@ -5,28 +5,50 @@
 
 <struts>
 
-	<!-- Configure NameSpace for action web -->
-	<package name="User" namespace="/user" extends="default-web">
-		<action name="findByUserId*" class="springUserAction" method="findByUserId">
-			<param name="user.userId">{1}</param>
-			<result name="success">User.Info</result>
-			<result name="input">User.Info</result>
-			<result name="error">User.Info</result>
-		</action>
+    <!-- Configure NameSpace for action web -->
+    <package name="User" namespace="/user" extends="default-web">
+        <action name="findByUserId*" class="springUserAction"
+            method="findByUserId">
+            <param name="user.userId">{1}</param>
+            <result name="success">User.Info</result>
+            <result name="input">User.Info</result>
+            <result name="error">User.Info</result>
+        </action>
 
-		<action name="findByUsername*" class="springUserAction" method="findByUsername">
-			<param name="user.username">{1}</param>
-			<result name="success">User.Info</result>
-			<result name="error">User.Info</result>
-		</action>
-        
-        <action name="signupForm" class="springUserAction" method="getSuccess">
+        <action name="findByUsername*" class="springUserAction"
+            method="findByUsername">
+            <param name="user.username">{1}</param>
+            <result name="success">User.Info</result>
+            <result name="error">User.Info</result>
+        </action>
+
+        <!-- SIGNUP -->
+        <action name="signupForm" class="springUserAction"
+            method="getSuccess">
             <result name="success">User.Signup</result>
         </action>
-        
-        <action name="signupProcess" class="springUserAction" method="signup">
+
+        <action name="signupProcess" class="springUserAction"
+            method="signup">
             <result name="success">User.Signup</result>
             <result name="error">User.Signup</result>
         </action>
-	</package>
+
+        <!-- SIGNIN -->
+        <action name="signinForm" class="springUserAction"
+            method="getSuccess">
+            <result name="success">User.Signin</result>
+        </action>
+
+        <action name="signinProcess" class="springUserAction"
+            method="checkLogin">
+            <result name="success">HomePage</result>
+            <result name="error">User.Signin</result>
+        </action>
+        
+        <!-- Logout -->
+        <action name="logout" class="springUserAction" method="logout">
+            <result name="success">HomePage</result>
+        </action>
+    </package>
 </struts>
