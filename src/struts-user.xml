@@ -19,5 +19,14 @@
 			<result name="success">User.Info</result>
 			<result name="error">User.Info</result>
 		</action>
+        
+        <action name="signupForm" class="springUserAction" method="getSuccess">
+            <result name="success">User.Signup</result>
+        </action>
+        
+        <action name="signupProcess" class="springUserAction" method="signup">
+            <result name="success">User.Signup</result>
+            <result name="error">User.Signup</result>
+        </action>
 	</package>
 </struts>

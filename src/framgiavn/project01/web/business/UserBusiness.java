@@ -7,7 +7,11 @@ public interface UserBusiness {
 
 	public User findByUsername(String username);
 
+	public User findByEmail(String email);
+	
 	public User checkLogin(User user);
+	
+	public boolean checkAccountAvalible(User user);
 
 	public boolean signup(User user);
 }

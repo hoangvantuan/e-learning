@@ -5,12 +5,18 @@
 
 <tiles-definitions>
 
-	<definition name="User.Info" extends="Default.Web">
-		<put-attribute name="body" value="/user/user_info.jsp" />
-		<put-list-attribute name="js">
-		</put-list-attribute>
-		<put-list-attribute name="css">
-		</put-list-attribute>
-	</definition>
-
+    <definition name="User.Info" extends="Default.Web">
+        <put-attribute name="body" value="/user/user_info.jsp" />
+        <put-list-attribute name="js">
+        </put-list-attribute>
+        <put-list-attribute name="css">
+        </put-list-attribute>
+    </definition>
+    <definition name="User.Signup" extends="Default.Web">
+        <put-attribute name="body" value="/user/signup/signup.jsp" />
+        <put-list-attribute name="js">
+        </put-list-attribute>
+        <put-list-attribute name="css">
+        </put-list-attribute>
+    </definition>
 </tiles-definitions>

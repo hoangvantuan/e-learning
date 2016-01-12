@@ -30,15 +30,9 @@
 		<property name="updatedAt" type="java.util.Date">
 			<column name="updated_at"  />
 		</property>
-		<property name="isAdmin" type="yes_no">
+		<property name="isAdmin" type="java.lang.Boolean">
 			<column name="is_admin" not-null="true" />
 		</property>
 	</class>
-	<query name="User.SelectUserByUserId">
-		select user
-		from User user
-		where user.userId =
-		:user_id
-	</query>
 	
 </hibernate-mapping>
