@@ -6,6 +6,22 @@
     </div>
     <div class="row signup-form">
         <div class="col-md-5 col-md-offset-3">
+            <div>
+                <div>
+                    <s:if test="hasActionErrors()">
+                        <div class="errors text-warning">
+                            <s:actionerror />
+                        </div>
+                    </s:if>
+                </div>
+                <div>
+                    <s:if test="hasActionMessages()">
+                        <div class="message text-info">
+                            <s:actionmessage />
+                        </div>
+                    </s:if>
+                </div>
+            </div>
             <s:form class="form-horizontal" method="POST" action="/user/signupProcess">
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Username*</label>

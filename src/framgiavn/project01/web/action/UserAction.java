@@ -16,12 +16,12 @@ public class UserAction extends ActionSupport implements SessionAware {
   /**
 	 * 
 	 */
-  private static final long   serialVersionUID = 1L;
+  private static final long          serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness        userBusiness     = null;
-  private User                user             = null;
+  private UserBusiness               userBusiness     = null;
+  private User                       user             = null;
   private SessionMap<String, Object> session;
 
   public void setUserBusiness(UserBusiness userBusiness) {
@@ -75,10 +75,14 @@ public class UserAction extends ActionSupport implements SessionAware {
       user = userBusiness.checkLogin(user);
     } catch (Exception e) {
       e.printStackTrace();
+    }
+    if (user != null) {
+      session.put("user", user);
+      return SUCCESS;
+    } else {
+      addActionError("Username or Password was wrong!");
       return ERROR;
     }
-    session.put("user", user);
-    return SUCCESS;
   }
 
   public String signup() {
@@ -90,15 +94,18 @@ public class UserAction extends ActionSupport implements SessionAware {
       } catch (Exception e) {
         e.printStackTrace();
       }
+      addActionMessage("Signup successfull! Please login");
       return SUCCESS;
     } else {
+      addActionError("Username Or Email was avalible!");
       return ERROR;
     }
 
   }
 
   public String logout() {
-    if(session != null) {
+
+    if (session != null) {
       session.invalidate();
     }
     return SUCCESS;
@@ -118,6 +125,6 @@ public class UserAction extends ActionSupport implements SessionAware {
   @Override
   public void setSession(Map<String, Object> session) {
 
-    this.session = (SessionMap)session;
+    this.session = (SessionMap) session;
   }
 }

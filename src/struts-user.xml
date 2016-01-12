@@ -30,7 +30,7 @@
 
         <action name="signupProcess" class="springUserAction"
             method="signup">
-            <result name="success">User.Signup</result>
+            <result name="success">User.Signin</result>
             <result name="error">User.Signup</result>
         </action>
 
