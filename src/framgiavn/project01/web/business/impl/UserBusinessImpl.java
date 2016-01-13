@@ -83,7 +83,7 @@ public class UserBusinessImpl implements UserBusiness {
 
   @Override
   public User checkAccountAvalible(User user) {
-    
+
     try {
       return getUserDAO().checkAccountAvalible(user);
     } catch (Exception e) {
@@ -92,4 +92,16 @@ public class UserBusinessImpl implements UserBusiness {
     }
   }
 
+  @Override
+  public boolean update(User user) {
+  
+    try{
+      getUserDAO().update(user);
+      return true;
+    } catch (Exception e) {
+      log.error(e);
+      return false;
+    }
+  
+  }
 }

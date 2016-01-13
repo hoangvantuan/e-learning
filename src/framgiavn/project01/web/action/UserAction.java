@@ -9,7 +9,10 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import framgiavn.project01.web.business.UserBusiness;
+import framgiavn.project01.web.model.Password;
 import framgiavn.project01.web.model.User;
+import framgiavn.project01.web.ulti.Helpers;
+import framgiavn.project01.web.ulti.User.UserHelpers;
 
 public class UserAction extends ActionSupport implements SessionAware {
 
@@ -22,6 +25,7 @@ public class UserAction extends ActionSupport implements SessionAware {
 
   private UserBusiness               userBusiness     = null;
   private User                       user             = null;
+  private Password                   password         = null;
   private SessionMap<String, Object> session;
 
   public void setUserBusiness(UserBusiness userBusiness) {
@@ -37,6 +41,16 @@ public class UserAction extends ActionSupport implements SessionAware {
   public void setUser(User user) {
 
     this.user = user;
+  }
+
+  public Password getPassword() {
+
+    return password;
+  }
+
+  public void setPassword(Password password) {
+
+    this.password = password;
   }
 
   public String findByUserId() {
@@ -111,14 +125,54 @@ public class UserAction extends ActionSupport implements SessionAware {
     return SUCCESS;
   }
 
-  public String homePage() {
+  public String changePassword() {
 
-    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    if (!session.isEmpty()) {
+      user = UserHelpers.getUserFromSession("user");
+      if (user != null) {
+        if (password != null) {
+          if (UserHelpers.checkOldPassword(user, password)) {
+            if (UserHelpers.checkConfirmPassword(password)) {
+              user.setPassword(password.getNewPassword());
+              user.setUpdatedAt(new Date());
+              try {
+                userBusiness.update(user);
+                addActionMessage("Password changed");
+                return SUCCESS;
+              } catch (Exception e) {
+                e.printStackTrace();
+              }
+              addActionError("Have errors while update !");
+              return ERROR;
+            } else {
+              addActionError("Comfirm password was wrong");
+              return ERROR;
+            }
+          } else {
+            addActionError("Old password was wrong");
+            return ERROR;
+          }
+        } else {
+          return ERROR;
+        }
+      }
+    }
+    return NONE;
+  }
+
+  public String changeAvatar() {
+
     return SUCCESS;
   }
 
-  public String getSuccess() {
+  public String showProfile() {
 
+    return SUCCESS;
+  }
+
+  public String homePage() {
+
+    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     return SUCCESS;
   }
 
@@ -127,4 +181,5 @@ public class UserAction extends ActionSupport implements SessionAware {
 
     this.session = (SessionMap) session;
   }
+
 }

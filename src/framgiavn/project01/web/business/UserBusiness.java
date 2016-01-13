@@ -14,4 +14,6 @@ public interface UserBusiness {
 	public User checkAccountAvalible(User user);
 
 	public boolean signup(User user);
+	
+	public boolean update(User user);
 }

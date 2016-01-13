@@ -27,7 +27,7 @@
                     <label for="username" class="col-sm-2 control-label">Username*</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="username" name="user.username"
-                            placeholder="6<=Username<=20" required="required" pattern=".{6,20}">
+                            placeholder="Username" required="required" pattern=".{6,20}">
                     </div>
                 </div>
                 <br>
@@ -36,7 +36,7 @@
                     <label for="password" class="col-sm-2 control-label">Password*</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="password"
-                            name="user.password" placeholder="6<=Password<=16" required="required"
+                            name="user.password" placeholder="Password" required="required"
                             pattern=".{6,16}">
                     </div>
                 </div>
