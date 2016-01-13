@@ -147,5 +147,4 @@ public class User implements Serializable {
     this.isAdmin = isAdmin;
   }
 
-
 }

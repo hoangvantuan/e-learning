@@ -29,10 +29,11 @@
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">${user.username}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Activities</a></li>
+                            <li><a href='<s:url value="/user/showProfile"></s:url>'><i class="glyphicon glyphicon-user"></i>&nbsp;Profile</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-grain"></i>&nbsp;Activities</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href='<s:url value="/user/logout"></s:url>'>Logout</a></li>
+                            <li><a href='<s:url value="/user/logout"></s:url>'><i
+                                    class="glyphicon glyphicon-off"></i>&nbsp;Logout</a></li>
                         </ul></li>
                 </ul>
             </s:if>

@@ -4,7 +4,6 @@
 body {
     background-image: url("/JavaProject02/image/common/background.jpg");
     background-size: cover;
-    
     color: white;
 }
 
@@ -29,12 +28,10 @@ body {
     background: transparent !important;
     border-color: transparent;
     background: transparent !important;
-    !
-    important;
 }
 
 .navbar-default .container-fluid {
-    height: 100px !important;
+    height: 50px !important;
 }
 
 .navbar-nav li {
@@ -42,12 +39,11 @@ body {
 }
 
 .navbar-nav li:hover {
-    border: white 1px solid !important;
+    opacity: 0.8;
 }
 
 .navbar-nav li:focus {
     background: transparent !important;
-    border: white 1px solid !important;
 }
 
 .navbar-nav li a {
@@ -69,10 +65,14 @@ body {
 
 /*SIGN UP*/
 
-
 /*ERRORS MESSAGE*/
-.errors, .message{
-    border:solid 1px white;
+.errors, .message {
+    border: solid 1px white;
     background-color: #F3DAF9;
+    padding-top: 10px;
 }
 
+/*PANEL HOME*/
+.panel-body {
+    color: #9E2222;
+}
