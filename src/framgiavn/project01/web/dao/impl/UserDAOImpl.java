@@ -1,5 +1,7 @@
 package framgiavn.project01.web.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 
 import framgiavn.project01.web.dao.UserDAO;
@@ -29,6 +31,20 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements UserDA
 			log.error("Get failed login", re);
 			throw re;
 		}
+	}
+	
+	@Override
+	public User checkAccountAvalible(User user) throws Exception {
+	
+	  try {
+	    Query query = getSession().getNamedQuery("User.CheckAccountAvalible");
+	    query.setParameter("username", user.getUsername());
+	    query.setParameter("email",user.getEmail());
+	    return (User)query.uniqueResult();
+	  } catch (RuntimeException re) {
+	    log.error("Account is avalible");
+	    throw re;
+	  }
 	}
 
 }
