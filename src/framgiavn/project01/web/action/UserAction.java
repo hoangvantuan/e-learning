@@ -17,15 +17,16 @@ import framgiavn.project01.web.ulti.User.UserHelpers;
 public class UserAction extends ActionSupport implements SessionAware {
 
   /**
-	 *
-	 */
-  private static final long          serialVersionUID = 1L;
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness               userBusiness     = null;
-  private User                       user             = null;
-  private Password                   password         = null;
+  private UserBusiness               userBusiness = null;
+  private User                       user         = null;
+  private Password                   password     = null;
+  private long                       joinedDay;
   private SessionMap<String, Object> session;
 
   public void setUserBusiness(UserBusiness userBusiness) {
@@ -51,6 +52,11 @@ public class UserAction extends ActionSupport implements SessionAware {
   public void setPassword(Password password) {
 
     this.password = password;
+  }
+
+  public long getJoinedDay() {
+
+    return joinedDay;
   }
 
   public String findByUserId() {
@@ -168,7 +174,17 @@ public class UserAction extends ActionSupport implements SessionAware {
 
   public String showProfile() {
 
-    return SUCCESS;
+    if (!session.isEmpty()) {
+      user = UserHelpers.getUserFromSession("user");
+      if (user != null) {
+        joinedDay = UserHelpers.getJoinedDay(user.getCreatedAt());
+        return SUCCESS;
+      } else {
+        return ERROR;
+      }
+    } else {
+      return ERROR;
+    }
   }
 
   public String homePage() {
