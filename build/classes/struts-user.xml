@@ -4,20 +4,73 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <!-- Configure NameSpace for action web -->
+    <package name="User" namespace="/user" extends="default-web">
+        <action name="findByUserId*" class="springUserAction"
+            method="findByUserId">
+            <param name="user.userId">{1}</param>
+            <result name="success">User.Info</result>
+            <result name="input">User.Info</result>
+            <result name="error">User.Info</result>
+        </action>
 
-	<!-- Configure NameSpace for action web -->
-	<package name="User" namespace="/user" extends="default-web">
-		<action name="findByUserId*" class="springUserAction" method="findByUserId">
-			<param name="user.userId">{1}</param>
-			<result name="success">User.Info</result>
-			<result name="input">User.Info</result>
-			<result name="error">User.Info</result>
-		</action>
+        <action name="findByUsername*" class="springUserAction"
+            method="findByUsername">
+            <param name="user.username">{1}</param>
+            <result name="success">User.Info</result>
+            <result name="error">User.Info</result>
+        </action>
 
-		<action name="findByUsername*" class="springUserAction" method="findByUsername">
-			<param name="user.username">{1}</param>
-			<result name="success">User.Info</result>
-			<result name="error">User.Info</result>
-		</action>
-	</package>
+        <!-- SIGNUP -->
+        <action name="signupForm">
+            <result>User.Signup</result>
+        </action>
+
+        <action name="signupProcess" class="springUserAction"
+            method="signup">
+            <result name="success">User.Signin</result>
+            <result name="error">User.Signup</result>
+        </action>
+
+        <!-- SIGNIN -->
+        <action name="signinForm">
+            <result>User.Signin</result>
+        </action>
+
+        <action name="signinProcess" class="springUserAction" method="checkLogin">
+            <result name="success">HomePage</result>
+            <result name="error">User.Signin</result>
+        </action>
+
+        <!-- Logout -->
+        <action name="logout" class="springUserAction" method="logout">
+            <result name="success">HomePage</result>
+        </action>
+
+        <!-- change password -->
+        <action name="changePasswordForm" class="springUserAction">
+            <result>User.ChangePassword</result>
+        </action>
+        <action name="changePassword" class="springUserAction"
+            method="changePassword">
+            <result name="success">HomePage</result>
+            <result name="error">User.ChangePassword</result>
+            <result name="none">HomePage</result>
+        </action>
+        
+        <!-- change avatar -->
+        <action name="changeAvatarForm" class="springUserAction">
+            <result>User.ChangeAvatar</result>
+        </action>
+        <action name="changeAvatar" class="springUserAction" method="changeAvatar">
+            <result name="success">HomePage</result>
+            <result name="error">User.ChangeAvatar</result>
+        </action>
+        
+        <!-- show profile -->
+        <action name="showProfile" class="springUserAction" method="showProfile">
+            <result name="success">User.Profile</result>
+            <result name="error">HomePage</result>
+        </action>
+    </package>
 </struts>

@@ -10,57 +10,98 @@ import framgiavn.project01.web.ulti.Logit2;
 
 public class UserBusinessImpl implements UserBusiness {
 
-	private static final Logit2 log = Logit2.getInstance(UserBusinessImpl.class);
+  private static final Logit2 log = Logit2.getInstance(UserBusinessImpl.class);
 
-	private UserDAO userDAO;
+  private UserDAO             userDAO;
 
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
+  public UserDAO getUserDAO() {
 
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+    return userDAO;
+  }
 
-	@Override
-	public User findByUserId(Integer user_id) {
-		try {
-			return getUserDAO().findById(user_id);
-		} catch (Exception e) {
-			log.error(e);
-			return null;
-		}
-	}
+  public void setUserDAO(UserDAO userDAO) {
 
-	@Override
-	public User findByUsername(String username) {
-		try {
-			List<User> list = getUserDAO().findByProperty("username", username);
-			return Helpers.isEmpty(list) ? null : list.get(0);
-		} catch (Exception e) {
-			log.error(e);
-			return null;
-		}
-	}
+    this.userDAO = userDAO;
+  }
 
-	public boolean signup(User user) {
-		try {
-			getUserDAO().save(user);
-			return true;
-		} catch (Exception e) {
-			log.error(e);
-			return false;
-		}
-	}
+  @Override
+  public User findByUserId(Integer user_id) {
 
-	@Override
-	public User checkLogin(User user) {
-		try {
-			return getUserDAO().checkLogin(user);
-		} catch (Exception e) {
-			log.error(e);
-			return null;
-		}
-	}
+    try {
+      return getUserDAO().findById(user_id);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
 
+  @Override
+  public User findByUsername(String username) {
+
+    try {
+      List<User> list = getUserDAO().findByProperty("username", username);
+      return Helpers.isEmpty(list) ? null : list.get(0);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
+
+  @Override
+  public User findByEmail(String email) {
+
+    try {
+      List<User> list = getUserDAO().findByProperty("email", email);
+      return Helpers.isEmpty(list) ? null : list.get(0);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
+
+  public boolean signup(User user) {
+
+    try {
+      getUserDAO().save(user);
+      return true;
+    } catch (Exception e) {
+      log.error(e);
+      return false;
+    }
+  }
+
+  @Override
+  public User checkLogin(User user) {
+
+    try {
+      return getUserDAO().checkLogin(user);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
+
+  @Override
+  public User checkAccountAvalible(User user) {
+
+    try {
+      return getUserDAO().checkAccountAvalible(user);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
+
+  @Override
+  public boolean update(User user) {
+  
+    try{
+      getUserDAO().update(user);
+      return true;
+    } catch (Exception e) {
+      log.error(e);
+      return false;
+    }
+  
+  }
 }
