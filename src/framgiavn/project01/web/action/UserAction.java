@@ -17,7 +17,7 @@ import framgiavn.project01.web.ulti.User.UserHelpers;
 public class UserAction extends ActionSupport implements SessionAware {
 
   /**
-	 * 
+	 *
 	 */
   private static final long          serialVersionUID = 1L;
 
@@ -103,6 +103,7 @@ public class UserAction extends ActionSupport implements SessionAware {
 
     if (userBusiness.checkAccountAvalible(user) == null) {
       user.setCreatedAt(new Date());
+      user.setAvatar("/JavaProject02/image/common/usernotfound.jpeg");
       try {
         userBusiness.signup(user);
       } catch (Exception e) {
