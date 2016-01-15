@@ -94,14 +94,15 @@ public class UserBusinessImpl implements UserBusiness {
 
   @Override
   public boolean update(User user) {
-  
-    try{
+
+    try {
       getUserDAO().update(user);
       return true;
     } catch (Exception e) {
       log.error(e);
       return false;
     }
-  
+
   }
+
 }
