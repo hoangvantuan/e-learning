@@ -20,16 +20,18 @@
                     <li><a href="#">Word List</a></li>
                     <li><a href="#">Categories</a></li>
                 </s:if>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href='<s:url value="/info/showAbout"></s:url>'>About</a></li>
+                <li><a href='<s:url value="/info/showContact"></s:url>'>Contact</a></li>
             </ul>
             <s:if test="#session.user">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">${user.username}<span class="caret"></span></a>
+                        aria-expanded="false"><s:property value="#session.user.username" /><span
+                            class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href='<s:url value="/user/showProfile"></s:url>'><i class="glyphicon glyphicon-user"></i>&nbsp;Profile</a></li>
+                            <li><a href='<s:url value="/user/showProfile"></s:url>'><i
+                                    class="glyphicon glyphicon-user"></i>&nbsp;Profile</a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-grain"></i>&nbsp;Activities</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href='<s:url value="/user/logout"></s:url>'><i

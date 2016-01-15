@@ -5,45 +5,43 @@
 
 <tiles-definitions>
 
-    <definition name="User.Info" extends="Default.Web">
-        <put-attribute name="body" value="/user/user_info.jsp" />
-        <put-list-attribute name="js">
-        </put-list-attribute>
-        <put-list-attribute name="css">
-        </put-list-attribute>
-    </definition>
-    <definition name="User.Signup" extends="Default.Web">
-        <put-attribute name="body" value="/user/signup/signup.jsp" />
-        <put-list-attribute name="js">
-        </put-list-attribute>
-        <put-list-attribute name="css">
-        </put-list-attribute>
-    </definition>
+	<definition name="User.Info" extends="Default.Web">
+		<put-attribute name="body" value="/user/user_info.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
+	<definition name="User.Signup" extends="Default.Web">
+		<put-attribute name="body" value="/user/signup/signup.jsp" />
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="css">
+		</put-list-attribute>
+	</definition>
 
-    <definition name="User.Signin" extends="Default.Web">
-        <put-attribute name="body" value="/user/signin/signin.jsp" />
-        <put-list-attribute name="js"></put-list-attribute>
-        <put-list-attribute name="css"></put-list-attribute>
-    </definition>
+	<definition name="User.Signin" extends="Default.Web">
+		<put-attribute name="body" value="/user/signin/signin.jsp" />
+		<put-list-attribute name="js"></put-list-attribute>
+		<put-list-attribute name="css"></put-list-attribute>
+	</definition>
 
-    <definition name="User.ChangePassword" extends="Default.Web">
-        <put-attribute name="body"
-            value="/user/profile/changepassword.jsp" />
-        <put-list-attribute name="js"></put-list-attribute>
-        <put-list-attribute name="css"></put-list-attribute>
-    </definition>
+	<definition name="User.ChangePassword" extends="Default.Web">
+		<put-attribute name="body" value="/user/profile/changepassword.jsp" />
+		<put-list-attribute name="js"></put-list-attribute>
+		<put-list-attribute name="css"></put-list-attribute>
+	</definition>
 
-    <definition name="User.ChangeAvatar" extends="Default.Web">
-        <put-attribute name="body"
-            value="/user/profile/changeavatar.jsp" />
-        <put-list-attribute name="js"></put-list-attribute>
-        <put-list-attribute name="css"></put-list-attribute>
-    </definition>
-    
-       <definition name="User.Profile" extends="Default.Web">
-        <put-attribute name="body"
-            value="/user/profile/profile.jsp" />
-        <put-list-attribute name="js"></put-list-attribute>
-        <put-list-attribute name="css"></put-list-attribute>
-    </definition>
+	<definition name="User.ChangeAvatar" extends="Default.Web">
+		<put-attribute name="body" value="/user/profile/changeavatar.jsp" />
+		<put-list-attribute name="js"></put-list-attribute>
+		<put-list-attribute name="css"></put-list-attribute>
+	</definition>
+
+	<definition name="User.Profile" extends="Default.Web">
+		<put-attribute name="body" value="/user/profile/profile.jsp" />
+		<put-list-attribute name="js"></put-list-attribute>
+		<put-list-attribute name="css"></put-list-attribute>
+	</definition>
+   
 </tiles-definitions>
