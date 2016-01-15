@@ -52,6 +52,16 @@ public class UserDAOImpl extends GenericDAOImpl<User, Integer> implements
     }
   }
 
+  @Override
+  public List<User> searchByUsername(String key) throws Exception {
 
+    try {
+      Query query = getSession().getNamedQuery("User.searchByUsername");
+      query.setParameter("username", "%"+key+"%");
+      return query.list();
+    } catch (RuntimeException re) {
+      throw re;
+    }
+  }
 
 }
