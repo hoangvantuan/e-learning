@@ -16,6 +16,8 @@ import framgiavn.project01.web.business.UserBusiness;
 import framgiavn.project01.web.model.Follow;
 import framgiavn.project01.web.model.Password;
 import framgiavn.project01.web.model.User;
+import framgiavn.project01.web.ulti.Constant;
+import framgiavn.project01.web.ulti.Helpers;
 import framgiavn.project01.web.ulti.User.UserHelpers;
 
 public class UserAction extends ActionSupport implements SessionAware {
@@ -35,6 +37,8 @@ public class UserAction extends ActionSupport implements SessionAware {
   private List<User>                 listUserFollowing = null;
   private Follow                     follow            = null;
   private Integer                    userId            = null;
+
+  private boolean                    isFollowing       = false;
 
   private long                       joinedDay;
   private SessionMap<String, Object> session;
@@ -94,6 +98,11 @@ public class UserAction extends ActionSupport implements SessionAware {
     return this.listUserFollowing;
   }
 
+  public boolean getIsFollowing() {
+
+    return this.isFollowing;
+  }
+
   public String findByUserId() {
 
     try {
@@ -132,7 +141,7 @@ public class UserAction extends ActionSupport implements SessionAware {
       e.printStackTrace();
     }
     if (user != null) {
-      session.put("user", user);
+      session.put(Constant.CURRENT_USER, user);
       return SUCCESS;
     } else {
       addActionError("Username or Password was wrong!");
@@ -143,8 +152,8 @@ public class UserAction extends ActionSupport implements SessionAware {
   public String signup() {
 
     if (userBusiness.checkAccountAvalible(user) == null) {
-      user.setCreatedAt(new Date());
-      user.setAvatar("/JavaProject02/image/common/usernotfound.jpeg");
+      user.setCreatedAt(Helpers.getCurrentDate());
+      user.setAvatar(Constant.NOT_FOUND_IMAGE);
       try {
         userBusiness.signup(user);
       } catch (Exception e) {
@@ -170,7 +179,7 @@ public class UserAction extends ActionSupport implements SessionAware {
   public String changePassword() {
 
     if (!session.isEmpty()) {
-      user = UserHelpers.getUserFromSession("user");
+      user = UserHelpers.getUserFromSession();
       if (user != null) {
         if (password != null) {
           if (UserHelpers.checkOldPassword(user, password)) {
@@ -209,19 +218,26 @@ public class UserAction extends ActionSupport implements SessionAware {
 
   public String showProfile() {
 
+    // List following & fllower of current user
     List<Follow> listFollowing = null;
     List<Follow> listFollower = null;
+    // save current follow (following is current id, follower is other user)
+    User currentUser = UserHelpers.getUserFromSession();
     if (!session.isEmpty()) {
-      if (userId == null)
-        user = UserHelpers.getUserFromSession("user");
-      else
+      if (userId == null) {
+        user = currentUser;
+      } else {
         user = userBusiness.findByUserId(userId);
+      }
       if (user != null) {
+        follow = UserHelpers.getCurrentFollow(currentUser, user);
         joinedDay = UserHelpers.getJoinedDay(user.getCreatedAt());
         listFollowing = followBusiness.getFollowing(user);
         listFollower = followBusiness.getFollower(user);
         listUserFollower = getListUserFollow(listFollowing, false);
         listUserFollowing = getListUserFollow(listFollower, true);
+        // Check current user following other user ?
+        isFollowing = followBusiness.isFollowing(follow);
         return SUCCESS;
       } else {
         return ERROR;
@@ -229,6 +245,40 @@ public class UserAction extends ActionSupport implements SessionAware {
     } else {
       return ERROR;
     }
+  }
+
+  public String unfollow() {
+
+    if (!session.isEmpty()) {
+      User currentUser = UserHelpers.getUserFromSession();
+      User user = userBusiness.findByUserId(userId);
+      if (user != null) {
+        follow = UserHelpers.getCurrentFollow(currentUser, user);
+        if (followBusiness.isFollowing(follow)) {
+          follow = followBusiness.getDataFollow(follow);
+          if (follow != null) {
+            followBusiness.deleteFollow(followBusiness.getDataFollow(follow));
+          }
+        }
+      }
+    }
+    return showProfile();
+  }
+
+  public String follow() {
+
+    if (!session.isEmpty()) {
+      User currentUser = UserHelpers.getUserFromSession();
+      User user = userBusiness.findByUserId(userId);
+
+      if (user != null && user.getUserId() != currentUser.getUserId()) {
+        follow = UserHelpers.getCurrentFollow(currentUser, user);
+        if (!followBusiness.isFollowing(follow)) {
+          followBusiness.addFollower(follow);
+        }
+      }
+    }
+    return showProfile();
   }
 
   public List<User> getListUserFollow(List<Follow> listFollow, boolean b) {
