@@ -37,6 +37,8 @@ public class UserAction extends ActionSupport implements SessionAware {
   private List<User>                 listUserFollowing = null;
   private Follow                     follow            = null;
   private Integer                    userId            = null;
+  private String                     searchKey         = null;
+  private List<User>                 resultSearch      = null;
 
   private boolean                    isFollowing       = false;
 
@@ -101,6 +103,21 @@ public class UserAction extends ActionSupport implements SessionAware {
   public boolean getIsFollowing() {
 
     return this.isFollowing;
+  }
+
+  public String getSearchKey() {
+
+    return this.searchKey;
+  }
+
+  public void setSearchKey(String searchKey) {
+
+    this.searchKey = searchKey;
+  }
+
+  public List<User> getResultSearch() {
+
+    return this.resultSearch;
   }
 
   public String findByUserId() {
@@ -279,6 +296,25 @@ public class UserAction extends ActionSupport implements SessionAware {
       }
     }
     return showProfile();
+  }
+
+  public String search() {
+
+    if (session.isEmpty())
+      return NONE;
+    if (searchKey != null) {
+      resultSearch = userBusiness.searchByUsername(searchKey);
+      if (!Helpers.isEmpty(resultSearch)) {
+        addActionMessage("Result for " + searchKey + ":");
+        return SUCCESS;
+      } else {
+        addActionError("Dont have result: " + searchKey);
+        return ERROR;
+      }
+    } else {
+      addActionError("Enter your key search");
+      return ERROR;
+    }
   }
 
   public List<User> getListUserFollow(List<Follow> listFollow, boolean b) {

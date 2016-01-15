@@ -90,5 +90,11 @@
             <result name="error">HomePage</result>
         </action>
 
+        <!-- search -->
+        <action name="searchUser" class="springUserAction" method="search">
+            <result name="success">User.SearchResult</result>
+            <result name="error">User.SearchResult</result>
+            <result name="none">HomePage</result>
+        </action>
     </package>
 </struts>

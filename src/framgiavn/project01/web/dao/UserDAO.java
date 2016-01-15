@@ -10,5 +10,7 @@ public interface UserDAO extends GenericDAO<User, Integer> {
   public User checkLogin(User user) throws Exception;
 
   public User checkAccountAvalible(User user) throws Exception;
+  
+  public List<User> searchByUsername(String key) throws Exception;
 
 }

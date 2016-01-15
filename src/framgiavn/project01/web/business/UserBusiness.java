@@ -20,5 +20,7 @@ public interface UserBusiness {
   public boolean signup(User user);
 
   public boolean update(User user);
+  
+  public List<User> searchByUsername(String key);
 
 }

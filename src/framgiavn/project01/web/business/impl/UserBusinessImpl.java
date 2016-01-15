@@ -104,5 +104,16 @@ public class UserBusinessImpl implements UserBusiness {
     }
 
   }
+  
+@Override
+  public List<User> searchByUsername(String key) {
+  
+    try {
+      return getUserDAO().searchByUsername(key);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
 
 }

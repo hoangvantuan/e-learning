@@ -24,6 +24,12 @@
                 <li><a href='<s:url value="/info/showContact"></s:url>'>Contact</a></li>
             </ul>
             <s:if test="#session.user">
+                <form class="navbar-form navbar-left" role="search" action='<s:url value="/user/searchUser"></s:url>' method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="searchKey">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
