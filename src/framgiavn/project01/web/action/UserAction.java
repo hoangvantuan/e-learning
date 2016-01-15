@@ -1,6 +1,8 @@
 package framgiavn.project01.web.action;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,35 +27,15 @@ public class UserAction extends ActionSupport implements SessionAware {
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness   userBusiness   = null;
-  private FollowBusiness followBusiness = null;
-  private User           user           = null;
-  private Follow         follow         = null;
-  private List<Follow>   listFollow     = null;
-  private Password       password       = null;
+  private UserBusiness   userBusiness      = null;
+  private FollowBusiness followBusiness    = null;
+  private User           user              = null;
+  private Password       password          = null;
+  private List<User>     listUserFollower  = null;
+  private List<User>     listUserFollowing = null;
 
   private long                       joinedDay;
   private SessionMap<String, Object> session;
-
-  public Follow getFollow() {
-
-    return follow;
-  }
-
-  public void setFollow(Follow follow) {
-
-    this.follow = follow;
-  }
-
-  public List<Follow> getListFollow() {
-
-    return listFollow;
-  }
-
-  public void setListFollow(List<Follow> listFollow) {
-
-    this.listFollow = listFollow;
-  }
 
   public void setUserBusiness(UserBusiness userBusiness) {
 
@@ -88,6 +70,16 @@ public class UserAction extends ActionSupport implements SessionAware {
   public long getJoinedDay() {
 
     return joinedDay;
+  }
+
+  public List<User> getListUserFollower() {
+
+    return this.listUserFollower;
+  }
+
+  public List<User> getListUserFollowing() {
+
+    return this.listUserFollowing;
   }
 
   public String findByUserId() {
@@ -205,11 +197,16 @@ public class UserAction extends ActionSupport implements SessionAware {
 
   public String showProfile() {
 
+    List<Follow> listFollowing = null;
+    List<Follow> listFollower = null;
     if (!session.isEmpty()) {
       user = UserHelpers.getUserFromSession("user");
       if (user != null) {
         joinedDay = UserHelpers.getJoinedDay(user.getCreatedAt());
-        listFollow = followBusiness.getFollowing(user);
+        listFollowing = followBusiness.getFollowing(user);
+        listFollower = followBusiness.getFollower(user);
+        listUserFollower = getListUserFollow(listFollowing, false);
+        listUserFollowing = getListUserFollow(listFollower, true);
         return SUCCESS;
       } else {
         return ERROR;
@@ -217,6 +214,23 @@ public class UserAction extends ActionSupport implements SessionAware {
     } else {
       return ERROR;
     }
+  }
+
+  public List<User> getListUserFollow(List<Follow> listFollow, boolean b) {
+
+    Iterator<Follow> listFollowIterator = listFollow.iterator();
+    User user;
+    List<User> listUser = new ArrayList<User>();
+    while (listFollowIterator.hasNext()) {
+      Follow f = (Follow) listFollowIterator.next();
+      if (!b) {
+        user = userBusiness.findByUserId(f.getFollowerId());
+      } else {
+        user = userBusiness.findByUserId(f.getFollowingId());
+      }
+      listUser.add(user);
+    }
+    return listUser;
   }
 
   public String homePage() {

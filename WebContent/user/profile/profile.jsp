@@ -31,9 +31,9 @@
 				<h3 class="panel-title">Following</h3>
 			</div>
 			<div class="panel-body">
-				<s:iterator value="listFollow">
-                    ${followingId }
-                    ${followerId  }<br>
+				<s:iterator value="listUserFollower">        
+                    ${username }
+                    <br>
 				</s:iterator>
 			</div>
 		</div>
@@ -43,6 +43,11 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Follower</h3>
 			</div>
-			<div class="panel-body">List Follower</div>
+			<div class="panel-body">
+				<s:iterator value="listUserFollowing">             
+                    ${username }                			
+                    <br>
+				</s:iterator>
+			</div>
 		</div>
 	</div>
