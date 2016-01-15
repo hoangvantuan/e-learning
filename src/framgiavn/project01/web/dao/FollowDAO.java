@@ -10,5 +10,9 @@ public interface FollowDAO extends GenericDAO<Follow, Integer> {
   public List<Follow> getFollowing(User user) throws Exception;
 
   public List<Follow> getFollower(User user) throws Exception;
+  
+  public boolean isFollowing(Follow follow) throws Exception;
+  
+  public Follow getDataFollow(Follow follow) throws Exception;
 
 }

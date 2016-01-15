@@ -77,6 +77,18 @@
             <result name="error">HomePage</result>
         </action>
 
+        <!-- follow unfollow -->
+        <action name="unfollow*" class="springUserAction" method="unfollow">
+            <param name="userId">{1}</param>
+            <result name="success">User.Profile</result>
+            <result name="error">HomePage</result>
+        </action>
+
+        <action name="follow*" class="springUserAction" method="follow">
+            <param name="userId">{1}</param>
+            <result name="success">User.Profile</result>
+            <result name="error">HomePage</result>
+        </action>
 
     </package>
 </struts>

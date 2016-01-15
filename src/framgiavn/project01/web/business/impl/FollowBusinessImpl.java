@@ -72,4 +72,26 @@ public class FollowBusinessImpl implements FollowBusiness {
     }
   }
 
+  @Override
+  public boolean isFollowing(Follow follow) {
+
+    try {
+      return getFollowDAO().isFollowing(follow);
+    } catch (Exception e) {
+      log.error(e);
+      return false;
+    }
+
+  }
+
+  @Override
+  public Follow getDataFollow(Follow follow) {
+
+    try {
+      return getFollowDAO().getDataFollow(follow);
+    } catch (Exception e) {
+      log.error(e);
+      return null;
+    }
+  }
 }

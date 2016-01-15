@@ -9,14 +9,12 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Queue;
 import java.util.Set;
-
-import framgiavn.project01.web.model.Password;
-import framgiavn.project01.web.model.User;
 
 /**
  * Helpers class, which contains static methods helper methods like loading the
@@ -268,4 +266,8 @@ public final class Helpers {
     }
   }
 
+  public static Date getCurrentDate() {
+
+    return new Date();
+  }
 }
