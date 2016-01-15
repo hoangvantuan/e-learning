@@ -23,16 +23,18 @@ public class UserAction extends ActionSupport implements SessionAware {
   /**
    *
    */
-  private static final long serialVersionUID = 1L;
+  private static final long          serialVersionUID  = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness   userBusiness      = null;
-  private FollowBusiness followBusiness    = null;
-  private User           user              = null;
-  private Password       password          = null;
-  private List<User>     listUserFollower  = null;
-  private List<User>     listUserFollowing = null;
+  private UserBusiness               userBusiness      = null;
+  private FollowBusiness             followBusiness    = null;
+  private User                       user              = null;
+  private Password                   password          = null;
+  private List<User>                 listUserFollower  = null;
+  private List<User>                 listUserFollowing = null;
+  private Follow                     follow            = null;
+  private Integer                    userId            = null;
 
   private long                       joinedDay;
   private SessionMap<String, Object> session;
@@ -70,6 +72,16 @@ public class UserAction extends ActionSupport implements SessionAware {
   public long getJoinedDay() {
 
     return joinedDay;
+  }
+
+  public void setFollow(Follow follow) {
+
+    this.follow = follow;
+  }
+
+  public void setUserId(Integer userId) {
+
+    this.userId = userId;
   }
 
   public List<User> getListUserFollower() {
@@ -200,7 +212,10 @@ public class UserAction extends ActionSupport implements SessionAware {
     List<Follow> listFollowing = null;
     List<Follow> listFollower = null;
     if (!session.isEmpty()) {
-      user = UserHelpers.getUserFromSession("user");
+      if (userId == null)
+        user = UserHelpers.getUserFromSession("user");
+      else
+        user = userBusiness.findByUserId(userId);
       if (user != null) {
         joinedDay = UserHelpers.getJoinedDay(user.getCreatedAt());
         listFollowing = followBusiness.getFollowing(user);

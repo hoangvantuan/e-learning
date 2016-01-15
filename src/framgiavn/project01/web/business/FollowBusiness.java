@@ -12,5 +12,7 @@ public interface FollowBusiness {
   public List<Follow> getFollower(User user);
 
   public boolean addFollower(Follow follow);
+  
+  public boolean deleteFollow(Follow follow);
 
 }
