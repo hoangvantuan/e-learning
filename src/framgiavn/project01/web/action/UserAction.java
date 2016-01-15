@@ -21,16 +21,17 @@ public class UserAction extends ActionSupport implements SessionAware {
   /**
    *
    */
-  private static final long          serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness               userBusiness     = null;
-  private FollowBusiness             followBusiness   = null;
-  private User                       user             = null;
-  private Follow                     follow           = null;
-  private List<Follow>               listFollow       = null;
-  private Password                   password         = null;
+  private UserBusiness   userBusiness   = null;
+  private FollowBusiness followBusiness = null;
+  private User           user           = null;
+  private Follow         follow         = null;
+  private List<Follow>   listFollow     = null;
+  private Password       password       = null;
+
   private long                       joinedDay;
   private SessionMap<String, Object> session;
 
