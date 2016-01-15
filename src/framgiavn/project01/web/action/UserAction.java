@@ -1,6 +1,7 @@
 package framgiavn.project01.web.action;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
@@ -8,10 +9,11 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import framgiavn.project01.web.business.FollowBusiness;
 import framgiavn.project01.web.business.UserBusiness;
+import framgiavn.project01.web.model.Follow;
 import framgiavn.project01.web.model.Password;
 import framgiavn.project01.web.model.User;
-import framgiavn.project01.web.ulti.Helpers;
 import framgiavn.project01.web.ulti.User.UserHelpers;
 
 public class UserAction extends ActionSupport implements SessionAware {
@@ -19,19 +21,47 @@ public class UserAction extends ActionSupport implements SessionAware {
   /**
    *
    */
-  private static final long serialVersionUID = 1L;
+  private static final long          serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness               userBusiness = null;
-  private User                       user         = null;
-  private Password                   password     = null;
+  private UserBusiness               userBusiness     = null;
+  private FollowBusiness             followBusiness   = null;
+  private User                       user             = null;
+  private Follow                     follow           = null;
+  private List<Follow>               listFollow       = null;
+  private Password                   password         = null;
   private long                       joinedDay;
   private SessionMap<String, Object> session;
+
+  public Follow getFollow() {
+
+    return follow;
+  }
+
+  public void setFollow(Follow follow) {
+
+    this.follow = follow;
+  }
+
+  public List<Follow> getListFollow() {
+
+    return listFollow;
+  }
+
+  public void setListFollow(List<Follow> listFollow) {
+
+    this.listFollow = listFollow;
+  }
 
   public void setUserBusiness(UserBusiness userBusiness) {
 
     this.userBusiness = userBusiness;
+  }
+
+  public void setFollowBusiness(FollowBusiness followBusiness) {
+
+    this.followBusiness = followBusiness;
   }
 
   public User getUser() {
@@ -178,6 +208,7 @@ public class UserAction extends ActionSupport implements SessionAware {
       user = UserHelpers.getUserFromSession("user");
       if (user != null) {
         joinedDay = UserHelpers.getJoinedDay(user.getCreatedAt());
+        listFollow = followBusiness.getFollowing(user);
         return SUCCESS;
       } else {
         return ERROR;
