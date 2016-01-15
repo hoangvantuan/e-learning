@@ -11,7 +11,7 @@ import framgiavn.project01.web.ulti.Logit2;
 public class FollowBusinessImpl implements FollowBusiness {
 
   private static final Logit2 log = Logit2
-      .getInstance(FollowBusinessImpl.class);
+                                      .getInstance(FollowBusinessImpl.class);
   private FollowDAO           followDAO;
 
   public FollowDAO getFollowDAO() {
@@ -58,6 +58,18 @@ public class FollowBusinessImpl implements FollowBusiness {
       return false;
     }
 
+  }
+
+  @Override
+  public boolean deleteFollow(Follow follow) {
+
+    try {
+      getFollowDAO().delete(follow);
+      return true;
+    } catch (Exception e) {
+      log.error(e);
+      return false;
+    }
   }
 
 }
