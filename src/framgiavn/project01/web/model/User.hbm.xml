@@ -41,9 +41,15 @@
         :username and user.password = :password
     </query>
     <query name="User.CheckAccountAvalible">
-       select user
-       from User user
-       where user.username = :username
-       or user.email = :email
+        select user
+        from User user
+        where user.username =
+        :username
+        or user.email = :email
+    </query>
+    <query name="User.searchByUsername">
+        select user
+        from User user
+        where user.username like :username
     </query>
 </hibernate-mapping>
