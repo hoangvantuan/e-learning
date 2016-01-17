@@ -24,8 +24,8 @@
             </div>
             <s:form class="form-horizontal" method="POST" action="/user/signinProcess">
                 <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Username*</label>
-                    <div class="col-sm-10">
+                    <label for="username" class="col-md-3 control-label">Username*</label>
+                    <div class="col-md-9">
                         <input type="text" class="form-control" id="username" name="user.username"
                             placeholder="Username" required="required" pattern=".{6,20}">
                     </div>
@@ -33,8 +33,8 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">Password*</label>
-                    <div class="col-sm-10">
+                    <label for="password" class="col-md-3 control-label">Password*</label>
+                    <div class="col-md-9">
                         <input type="password" class="form-control" id="password"
                             name="user.password" placeholder="Password" required="required"
                             pattern=".{6,16}">
@@ -43,7 +43,7 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-2 col-md-9">
                         <button type="submit" class="btn btn-primary pull-right">Sign in</button>
                     </div>
                 </div>

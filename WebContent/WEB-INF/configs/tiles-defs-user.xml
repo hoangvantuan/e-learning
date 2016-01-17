@@ -39,10 +39,15 @@
         <put-list-attribute name="js"></put-list-attribute>
         <put-list-attribute name="css"></put-list-attribute>
     </definition>
-    
-       <definition name="User.Profile" extends="Default.Web">
-        <put-attribute name="body"
-            value="/user/profile/profile.jsp" />
+
+    <definition name="User.Profile" extends="Default.Web">
+        <put-attribute name="body" value="/user/profile/profile.jsp" />
+        <put-list-attribute name="js"></put-list-attribute>
+        <put-list-attribute name="css"></put-list-attribute>
+    </definition>
+
+    <definition name="User.SearchResult" extends="Default.Web">
+        <put-attribute name="body" value="/user/search/searchResult.jsp" />
         <put-list-attribute name="js"></put-list-attribute>
         <put-list-attribute name="css"></put-list-attribute>
     </definition>
