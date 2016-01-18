@@ -123,8 +123,8 @@ public final class Helpers {
       boolean defaultValue) {
 
     String propertyValue = p.getProperty(name);
-    return propertyValue == null ? defaultValue : new Boolean(propertyValue)
-        .booleanValue();
+    return propertyValue == null ? defaultValue
+        : new Boolean(propertyValue).booleanValue();
   }
 
   public static String createStringId(String header, int n, long id) {

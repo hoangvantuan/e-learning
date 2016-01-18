@@ -2,7 +2,6 @@ package framgiavn.project01.web.business;
 
 import java.util.List;
 
-import framgiavn.project01.web.model.Follow;
 import framgiavn.project01.web.model.User;
 
 public interface UserBusiness {
@@ -20,5 +19,7 @@ public interface UserBusiness {
   public boolean signup(User user);
 
   public boolean update(User user);
+
+  public List<User> searchByUsername(String key);
 
 }

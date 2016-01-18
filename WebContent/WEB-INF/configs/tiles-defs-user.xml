@@ -43,5 +43,10 @@
 		<put-list-attribute name="js"></put-list-attribute>
 		<put-list-attribute name="css"></put-list-attribute>
 	</definition>
-   
+
+	<definition name="User.SearchResult" extends="Default.Web">
+		<put-attribute name="body" value="/user/search/searchResult.jsp" />
+		<put-list-attribute name="js"></put-list-attribute>
+		<put-list-attribute name="css"></put-list-attribute>
+	</definition>
 </tiles-definitions>

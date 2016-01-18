@@ -1,78 +1,11 @@
 /* COMMON CSS DOCUMENT */
-
-/*BODY*/
-body {
-    background-image: url("/JavaProject02/image/common/background.jpg");
-    background-size: cover;
-    color: white;
-}
-
-/*HOMEPAGE */
-.jumbotron-customer {
-    background: transparent !important;
-    color: #DE6A6A !important;
-}
-
-.jumbotron-customer h1, p {
-    text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
-        1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-}
-
-.btn-primary {
-    background-color: #DE6A6A !important;
-    border-color: #F7E2F6 !important;
-}
-
 .navbar-default {
-    height: 150px !important;
-    background: transparent !important;
-    border-color: transparent;
-    background: transparent !important;
+	height: 50px !important;
 }
-
-.navbar-default .container-fluid {
-    height: 50px !important;
-}
-
-.navbar-nav li {
-    color: white !important;
-}
-
-.navbar-nav li:hover {
-    opacity: 0.8;
-}
-
-.navbar-nav li:focus {
-    background: transparent !important;
-}
-
-.navbar-nav li a {
-    color: white !important;
-}
-
-.dropdown-menu {
-    background: transparent !important;
-}
-
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus,
-    .navbar-default .navbar-nav>.open>a:hover {
-    background-color: transparent !important;
-}
-
-.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
-    background-color: transparent !important;
-}
-
-/*SIGN UP*/
 
 /*ERRORS MESSAGE*/
 .errors, .message {
-    border: solid 1px white;
-    background-color: #F3DAF9;
-    padding-top: 10px;
-}
-
-/*PANEL HOME*/
-.panel-body {
-    color: #9E2222;
+	border: solid 1px white;
+	background-color: #F3DAF9;
+	padding-top: 10px;
 }

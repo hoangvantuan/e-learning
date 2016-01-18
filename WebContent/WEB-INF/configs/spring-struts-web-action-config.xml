@@ -8,7 +8,7 @@
 	<bean id="springUserAction" class="framgiavn.project01.web.action.UserAction"
 		scope="prototype">
 		<property name="userBusiness" ref="UserBusiness" />
-        <property name="followBusiness" ref="FollowBusiness" />
+		<property name="followBusiness" ref="FollowBusiness" />
 	</bean>
 
 </beans>
