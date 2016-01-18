@@ -36,7 +36,7 @@
 		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
 		<param-value>
         	/WEB-INF/configs/tiles-defs-default.xml
-        	,/WEB-INF/configs/tiles-defs-user.xml,/WEB-INF/configs/tiles-defs-info.xml
+        	,/WEB-INF/configs/tiles-defs-user.xml,/WEB-INF/configs/tiles-defs-info.xml,/WEB-INF/configs/tiles-defs-word.xml
         </param-value>
 	</context-param>
 	<listener>

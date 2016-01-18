@@ -116,6 +116,7 @@ public class GenericDAOImpl<E, Id extends Serializable> extends
     }
   }
 
+  @SuppressWarnings("unchecked")
   public List<E> findByProperty(String propertyName, Object value)
       throws Exception {
 

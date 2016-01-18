@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2016 3:06:30 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="framgiavn.project01.web.model.WordAnswer" table="wordanswer">
+        <id name="wordAnswerId" type="int">
+            <column name="wordanswer_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="wordId" type="int">
+            <column name="word_id" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="content" />
+        </property>
+        <property name="correct" type="java.lang.Boolean">
+            <column name="correct" />
+        </property>
+        <property name="createdAt" type="java.util.Date">
+            <column name="created_at" />
+        </property>
+        <property name="updatedAt" type="java.util.Date">
+            <column name="updatedAt" />
+        </property>
+    </class>
+</hibernate-mapping>

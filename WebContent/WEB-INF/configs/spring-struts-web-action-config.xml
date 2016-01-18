@@ -10,5 +10,10 @@
 		<property name="userBusiness" ref="UserBusiness" />
 		<property name="followBusiness" ref="FollowBusiness" />
 	</bean>
+	<!-- ================== WORD MODULE ================== -->
+	<bean id="springWordAction" class="framgiavn.project01.web.action.WordAction"
+		scope="prototype">
+		<property name="wordBusiness" ref="WordBusiness"></property>
+	</bean>
 
 </beans>
