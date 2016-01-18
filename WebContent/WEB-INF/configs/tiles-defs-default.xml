@@ -6,18 +6,18 @@
 <tiles-definitions>
 	<!-- Define Struts Tile for Front-End module -->
 	<definition name="Default.Web" template="/layout/layout-default.jsp">
-        <put-attribute name="navigation" value="/layout/navigation.jsp" />
+		<put-attribute name="navigation" value="/layout/navigation.jsp" />
 		<put-attribute name="header" value="/layout/header.jsp" />
 		<put-attribute name="footer" value="/layout/footer.jsp" />
 		<put-attribute name="body" value="/layout/body-empty.jsp" />
 
 		<put-list-attribute name="default-css">
-            <add-attribute value="/css/bootstrap.min.css"></add-attribute>
-            <add-attribute value="/css/common.css"></add-attribute>
+			<add-attribute value="/css/bootstrap.min.css"></add-attribute>
+			<add-attribute value="/css/common.css"></add-attribute>
 		</put-list-attribute>
 		<put-list-attribute name="default-js">
 			<add-attribute value="/js/jquery.js" />
-            <add-attribute value="/js/bootstrap.min.js"></add-attribute>
+			<add-attribute value="/js/bootstrap.min.js"></add-attribute>
 		</put-list-attribute>
 	</definition>
 

@@ -8,31 +8,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<link type="image/x-icon" href="/JavaProject02/image/common/favicon.png" rel="icon" />
+<link type="image/x-icon" href="/JavaProject02/image/common/favicon.png"
+	rel="icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="cache-control" content="no-cache" />
 <meta http-equiv="expires" content="0" />
-<tiles:useAttribute id="list" name="default-css" classname="java.util.List" />
+<tiles:useAttribute id="list" name="default-css"
+	classname="java.util.List" />
 <c:forEach var="item" items="${list}">
-    <link rel="stylesheet" href="<c:url value='${item}'/>" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<c:url value='${item}'/>" type="text/css"
+		media="screen" />
 </c:forEach>
 <%-- Addition CSS --%>
 <tiles:useAttribute id="list" name="css" classname="java.util.List" />
 <c:forEach var="item" items="${list}">
-    <link rel="stylesheet" href="<c:url value='${item}'/>" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<c:url value='${item}'/>" type="text/css"
+		media="screen" />
 </c:forEach>
 
 <%-- Default JS --%>
-<tiles:useAttribute id="list" name="default-js" classname="java.util.List" />
+<tiles:useAttribute id="list" name="default-js"
+	classname="java.util.List" />
 <c:forEach var="item" items="${list}">
-    <script src="<c:url value='${item}'/>" type="text/javascript"></script>
+	<script src="<c:url value='${item}'/>" type="text/javascript"></script>
 </c:forEach>
 
 <%-- Addition JS --%>
 <tiles:useAttribute id="list" name="js" classname="java.util.List" />
 <c:forEach var="item" items="${list}">
-    <script src="<c:url value='${item}'/>" type="text/javascript"></script>
+	<script src="<c:url value='${item}'/>" type="text/javascript"></script>
 </c:forEach>
 
 <script type="text/javascript">
@@ -64,25 +69,25 @@
 
 </head>
 <body>
-    <div id="mdg-dialog"></div>
-    <div id="web_formAways" style="display: none;"></div>
-    <div id="progress_loading_img"></div>
-    <s:hidden name="GMTLocal" id="GMTLocal" />
-    <div id="wrapper">
-        <!-- navigation -->
-        <tiles:insertAttribute name="navigation"></tiles:insertAttribute>
-        <!--start login-->
-        <tiles:insertAttribute name="header" />
-        <!--end login-->
-        <div id="container">
-            <tiles:insertAttribute name="body" />
-        </div>
-        <div id="footer">
-            <!--start banner-->
-            <tiles:insertAttribute name="footer" />
-            <!--end footer-->
-        </div>
-        <a href="#scrolltop" class="scrollTopAll"></a>
-    </div>
+	<div id="mdg-dialog"></div>
+	<div id="web_formAways" style="display: none;"></div>
+	<div id="progress_loading_img"></div>
+	<s:hidden name="GMTLocal" id="GMTLocal" />
+	<div id="wrapper">
+		<!-- navigation -->
+		<tiles:insertAttribute name="navigation"></tiles:insertAttribute>
+		<!--start login-->
+		<tiles:insertAttribute name="header" />
+		<!--end login-->
+		<div id="container">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div id="footer">
+			<!--start banner-->
+			<tiles:insertAttribute name="footer" />
+			<!--end footer-->
+		</div>
+		<a href="#scrolltop" class="scrollTopAll"></a>
+	</div>
 </body>
 </html>

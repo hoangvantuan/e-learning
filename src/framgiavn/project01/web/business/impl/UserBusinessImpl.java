@@ -12,7 +12,7 @@ public class UserBusinessImpl implements UserBusiness {
 
   private static final Logit2 log = Logit2.getInstance(UserBusinessImpl.class);
 
-  private UserDAO             userDAO;
+  private UserDAO userDAO;
 
   public UserDAO getUserDAO() {
 
@@ -59,6 +59,7 @@ public class UserBusinessImpl implements UserBusiness {
     }
   }
 
+  @Override
   public boolean signup(User user) {
 
     try {
@@ -104,10 +105,10 @@ public class UserBusinessImpl implements UserBusiness {
     }
 
   }
-  
-@Override
+
+  @Override
   public List<User> searchByUsername(String key) {
-  
+
     try {
       return getUserDAO().searchByUsername(key);
     } catch (Exception e) {
