@@ -25,22 +25,22 @@ public class UserAction extends ActionSupport implements SessionAware {
   /**
    *
    */
-  private static final long          serialVersionUID  = 1L;
+  private static final long serialVersionUID = 1L;
 
   // private Logit2 log = Logit2.getInstance(UserAction.class);
 
-  private UserBusiness               userBusiness      = null;
-  private FollowBusiness             followBusiness    = null;
-  private User                       user              = null;
-  private Password                   password          = null;
-  private List<User>                 listUserFollower  = null;
-  private List<User>                 listUserFollowing = null;
-  private Follow                     follow            = null;
-  private Integer                    userId            = null;
-  private String                     searchKey         = null;
-  private List<User>                 resultSearch      = null;
+  private UserBusiness   userBusiness      = null;
+  private FollowBusiness followBusiness    = null;
+  private User           user              = null;
+  private Password       password          = null;
+  private List<User>     listUserFollower  = null;
+  private List<User>     listUserFollowing = null;
+  private Follow         follow            = null;
+  private Integer        userId            = null;
+  private String         searchKey         = null;
+  private List<User>     resultSearch      = null;
 
-  private boolean                    isFollowing       = false;
+  private boolean isFollowing = false;
 
   private long                       joinedDay;
   private SessionMap<String, Object> session;
@@ -169,7 +169,6 @@ public class UserAction extends ActionSupport implements SessionAware {
   public String signup() {
 
     if (userBusiness.checkAccountAvalible(user) == null) {
-      user.setCreatedAt(Helpers.getCurrentDate());
       user.setAvatar(Constant.NOT_FOUND_IMAGE);
       try {
         userBusiness.signup(user);
@@ -323,7 +322,7 @@ public class UserAction extends ActionSupport implements SessionAware {
     User user;
     List<User> listUser = new ArrayList<User>();
     while (listFollowIterator.hasNext()) {
-      Follow f = (Follow) listFollowIterator.next();
+      Follow f = listFollowIterator.next();
       if (!b) {
         user = userBusiness.findByUserId(f.getFollowerId());
       } else {
