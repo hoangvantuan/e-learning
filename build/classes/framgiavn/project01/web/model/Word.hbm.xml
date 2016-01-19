@@ -4,7 +4,7 @@
 <!-- Generated Jan 18, 2016 1:20:06 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="framgiavn.project01.web.model.Word" table="word">
-        <id name="wordId" type="int">
+        <id name="wordId" type="java.lang.Integer">
             <column name="word_id" />
             <generator class="assigned" />
         </id>

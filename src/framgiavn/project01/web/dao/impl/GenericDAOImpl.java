@@ -123,7 +123,8 @@ public class GenericDAOImpl<E, Id extends Serializable> extends
     log.debug("finding instance with property: " + propertyName + ", value: "
         + value);
     try {
-      String queryString = "from as model where model." + propertyName + "= ?";
+      String queryString = "from " + getPersistentClass().getName()
+          + " as model where model." + propertyName + "=  ";
       return getHibernateTemplate().find(queryString, value);
     } catch (RuntimeException re) {
       log.error("find by property name failed", re);
