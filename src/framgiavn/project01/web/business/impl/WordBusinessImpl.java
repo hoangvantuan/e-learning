@@ -23,7 +23,7 @@ public class WordBusinessImpl implements WordBusiness {
   }
 
   @Override
-  public List<Word> listAllWord() throws Exception {
+  public List<Word> listAll() throws Exception {
 
     try {
       return getWordDAO().listAll();

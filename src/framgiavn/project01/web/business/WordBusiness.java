@@ -6,5 +6,5 @@ import framgiavn.project01.web.model.Word;
 
 public interface WordBusiness {
 
-  public List<Word> listAllWord() throws Exception;
+  public List<Word> listAll() throws Exception;
 }
